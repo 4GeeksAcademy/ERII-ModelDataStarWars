@@ -22,11 +22,11 @@ class Starships(Base):
     length = Column(Integer)
     passengers = Column(Integer)
     cargo_capacity = Column(Integer)
-    liked_starship = Column(Integer, ForeignKey('liked_starships.id'))
-    liked_starship_relationship = relationship("liked_tarships", uselist=False)
+    favorite_starship = Column(Integer, ForeignKey('favorite_starships.id'))
+    favorite_starship_relationship = relationship("favorite_tarships", uselist=False)
 
-class Liked_Starships(Base):
-    __tablename__ = 'liked_starships'
+class Favorite_Starships(Base):
+    __tablename__ = 'favorite_starships'
     id = Column(Integer, primary_key=True)
     starship = Column(Integer, ForeignKey('starships.id'))
     starship_relationship = relationship(Starships)
@@ -45,11 +45,11 @@ class Planets(Base):
     climate = Column(String(250))
     terrain = Column(String(250))
     surface_water = Column(Integer)
-    liked_planet = Column(Integer, ForeignKey('liked_planets.id'))
-    liked_planet_relationship = relationship("liked_planets", uselist=False)
+    favorite_planet = Column(Integer, ForeignKey('favorite_planets.id'))
+    favorite_planet_relationship = relationship("favorite_planets", uselist=False)
 
-class Liked_Planets(Base):
-    __tablename__ = 'liked_planets'
+class Favorite_Planets(Base):
+    __tablename__ = 'favorite_planets'
     id = Column(Integer, primary_key=True)
     planet = Column(Integer, ForeignKey('planets.id'))
     planet_relationship = relationship(Planets)
@@ -71,12 +71,12 @@ class Characters(Base):
     planet_relationship = relationship(Planets)
     starship = Column(Integer, ForeignKey('starships.id'))
     starship_relationship = relationship(Starships)
-    liked_character = Column(Integer, ForeignKey('liked_characters.id'))
-    liked_character_relationship = relationship("liked_Characters", uselist=False)
+    favorite_character = Column(Integer, ForeignKey('favorite_characters.id'))
+    favorite_character_relationship = relationship("favorite_Characters", uselist=False)
     
 
-class Liked_Characters(Base):
-    __tablename__ = 'liked_characters'
+class Favorite_Characters(Base):
+    __tablename__ = 'favorite_characters'
     id = Column(Integer, primary_key=True)
     character = Column(Integer, ForeignKey('characters.id'))
     character_relationship = relationship(Characters, uselist=False)
